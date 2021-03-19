@@ -10,6 +10,7 @@ int low = 2;
 int high = n_max;
 int mid;
 int *a = (int *)malloc(sizeof(int) * n_max);
+
 int find_first_zero(int begin, int end)
 {
     int first_zero = -1;
