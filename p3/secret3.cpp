@@ -6,8 +6,8 @@ using namespace std;
 ll k;
 int n = 2;
 int n_max = 2e6;
-int minimum = 2;
-int maximum = n_max;
+int low = 2;
+int high = n_max;
 int mid;
 int *a = (int *)malloc(sizeof(int) * n_max);
 int find_first_zero(int begin, int end)
@@ -73,17 +73,17 @@ ll total_times(int n)
 
     return c;
 }
-bool f3(int minimum, int maximum)
+bool f3(int low, int high)
 {
-    while (minimum <= maximum)
+    while (low <= high)
     {
-        mid = (minimum + maximum) / 2;
+        mid = (low + high) / 2;
         ll c = total_times(mid);
         if (c < mid + k)
-            minimum = mid + 1;
+            low = mid + 1;
         else if (c > mid + k)
         {
-            maximum = mid - 1;
+            high = mid - 1;
         }
         else
             return true;
@@ -99,7 +99,7 @@ int main()
         r = f2();
     else
     {
-        r = f3(minimum, maximum);
+        r = f3(low, high);
         n = mid;
     }
     if (r)
